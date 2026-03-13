@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CheryyBot — TP / Trailing / Hard Cap Guide</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0a0e14; font-family: 'Courier New', monospace; color: #cdd6f4; padding: 20px; min-height: 100vh; }
+h1 { font-size: 20px; text-align: center; color: #fff; letter-spacing: 2px; margin-bottom: 4px; }
+.subtitle { text-align: center; font-size: 10px; color: #444; letter-spacing: 3px; margin-bottom: 20px; }
+.tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; }
+.tab { background: #111520; border: 1px solid #2a2a3a; color: #555; padding: 7px 13px; border-radius: 4px; cursor: pointer; font-family: inherit; font-size: 11px; transition: all 0.2s; }
+.tab.active { font-weight: 700; }
+.card { background: #111520; border-radius: 8px; padding: 22px; margin-bottom: 16px; border: 1px solid #1e2235; }
+.card-title { font-size: 12px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
+.card-desc { font-size: 12px; color: #99aacc; line-height: 1.6; margin-bottom: 16px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.box { border-radius: 4px; padding: 12px; }
+.box-label { font-size: 10px; letter-spacing: 2px; margin-bottom: 5px; }
+.box-text { font-size: 11px; color: #8ab; line-height: 1.5; }
+.flow-label { font-size: 10px; letter-spacing: 3px; color: #444; margin-bottom: 10px; }
+.flow { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; margin-bottom: 20px; }
+.step { border-radius: 4px; padding: 8px 10px; text-align: center; min-width: 90px; font-size: 10px; line-height: 1.4; border: 1px solid; }
+.step-icon { font-size: 14px; margin-bottom: 2px; }
+.arrow { color: #334; font-size: 18px; }
+.combine-label { font-size: 10px; letter-spacing: 3px; color: #444; margin-bottom: 8px; }
+.combine-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.combine-btn { border-radius: 3px; padding: 5px 12px; cursor: pointer; font-family: inherit; font-size: 10px; letter-spacing: 0.5px; border: 1px solid; background: transparent; }
+.table-wrap { background: #111520; border: 1px solid #1e2235; border-radius: 8px; padding: 20px; }
+.table-label { font-size: 10px; letter-spacing: 3px; color: #444; margin-bottom: 14px; }
+.table { display: grid; grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 1px; font-size: 11px; }
+.cell { padding: 7px 8px; border-bottom: 1px solid #1a1e2a; }
+</style>
+</head>
+<body>
+
+<h1>TP · TRAILING · HARD CAP</h1>
+<div class="subtitle">CHERYYBOT — GUIDE · click a scenario to explore</div>
+
+<div class="tabs" id="tabs"></div>
+<div id="card" class="card"></div>
+
+<div class="table-wrap">
+  <div class="table-label">QUICK REFERENCE</div>
+  <div class="table" id="table"></div>
+</div>
+
+<script>
+const S = [
+  {
+    id:"tp_only", color:"#00d4aa",
+    label:"First TP / Grid Basket TP",
+    desc:"Classic fixed-level close. The bot calculates the average entry price of the entire basket and sets one shared TP level. When price touches it — the whole basket closes.",
+    when:"Ranging market, quick scalping, small target price move",
+    risk:"Closes too early if market continues moving in your favour",
+    combine:["trailing","hard_cap"],
+    flow:[
+      {icon:"▶",label:"ENTRY",type:"entry"},
+      {icon:"↓",label:"Grid_1 averaging",type:"grid"},
+      {icon:"↓",label:"Grid_2 averaging",type:"grid"},
+      {icon:"✓",label:"Basket TP → CLOSE",type:"tp"},
+    ]
+  },
+  {
+    id:"trailing", color:"#f0a500",
+    label:"Trailing (no TP)",
+    desc:"Bot waits until total basket profit reaches the Trigger ($). Then it tracks the profit peak. When profit pulls back by Trail Step from the peak — basket closes.",
+    when:"Trending market — you want to squeeze maximum out of a strong move",
+    risk:"May wait a long time for trigger. Pullback will cost you Trail Step in profit.",
+    combine:["hard_cap","tp_only"],
+    flow:[
+      {icon:"▶",label:"ENTRY",type:"entry"},
+      {icon:"⚡",label:"Trigger $65 reached",type:"trigger"},
+      {icon:"▲",label:"Tracking peak profit",type:"peak"},
+      {icon:"✓",label:"Pullback → Trail → CLOSE",type:"trail_close"},
+    ]
+  },
+  {
+    id:"hard_cap", color:"#e84393",
+    label:"Hard Cap (no TP / Trailing)",
+    desc:"Instant close when total basket profit reaches the cap. Does NOT wait for a pullback — closes immediately at the limit.",
+    when:"You need certainty of close — before news, end of session, volatile conditions",
+    risk:"Closes exactly at the cap — no more, even if market keeps running",
+    combine:["trailing","tp_only"],
+    flow:[
+      {icon:"▶",label:"ENTRY",type:"entry"},
+      {icon:"→",label:"Profit growing...",type:"neutral"},
+      {icon:"✓",label:"Hard Cap → CLOSE",type:"hardcap"},
+    ]
+  },
+  {
+    id:"trailing_hardcap", color:"#7c6fff",
+    label:"⭐ Trailing + Hard Cap",
+    desc:"BEST COMBINATION. Trailing follows the trend and extracts maximum profit. Hard Cap is the ceiling — if price spikes very fast (news!) it closes immediately without waiting for a pullback. You get both flexibility and safety.",
+    when:"Volatile markets, news events, trend with risk of sharp reversal",
+    risk:"Minimal — both mechanisms complement each other perfectly",
+    combine:[],
+    flow:[
+      {icon:"▶",label:"ENTRY",type:"entry"},
+      {icon:"⚡",label:"Trailing Trigger",type:"trigger"},
+      {icon:"✓",label:"FAST SPIKE → Hard Cap → CLOSE",type:"hardcap"},
+      {icon:"✓",label:"OR: peak + pullback → Trail → CLOSE",type:"trail_close"},
+    ]
+  },
+  {
+    id:"tp_trailing", color:"#39d353",
+    label:"Grid Basket TP + Trailing",
+    desc:"Basket TP shifts automatically as each new grid level is added (averaging down). If market goes HIGHER than TP — trailing can take over and follow further. Note: Trailing Trigger must be set higher than the Basket TP value.",
+    when:"Grid averaging + you don't want to exit too early on a strong trend",
+    risk:"Trailing Trigger MUST be > Grid Basket TP, otherwise trailing won't activate in time",
+    combine:["hard_cap"],
+    flow:[
+      {icon:"▶",label:"ENTRY",type:"entry"},
+      {icon:"↓",label:"Grid added, Basket TP shifts",type:"grid"},
+      {icon:"✓",label:"Price returns to TP → CLOSE",type:"tp"},
+      {icon:"⚡",label:"OR: price goes higher → Trailing takes over",type:"trigger"},
+      {icon:"✓",label:"Pullback → Trail → CLOSE",type:"trail_close"},
+    ]
+  },
+];
+
+const TYPES = {
+  entry:      {bg:"#0d2233",border:"#00aaff"},
+  grid:       {bg:"#0d1f0d",border:"#44aa44"},
+  tp:         {bg:"#062a1e",border:"#00d4aa"},
+  trigger:    {bg:"#2a2200",border:"#f0a500"},
+  peak:       {bg:"#2a1a00",border:"#ffcc00"},
+  trail_close:{bg:"#2a1000",border:"#ff6600"},
+  hardcap:    {bg:"#2a0a1a",border:"#e84393"},
+  neutral:    {bg:"#111520",border:"#444"},
+};
+
+const TABLE_ROWS = [
+  ["","FIXED TP","TRAILING","HARD CAP"],
+  ["Close level","fixed","dynamic","fixed ceiling"],
+  ["Uses the trend","NO","YES ✓","NO"],
+  ["Waits for pullback","NO","YES","NO"],
+  ["Certainty of close","HIGH","MEDIUM","HIGH ✓"],
+  ["Works with grid","YES ✓","YES ✓","YES ✓"],
+  ["Best for","Scalping","Trending","Protection"],
+];
+
+// Build table
+const tEl = document.getElementById('table');
+TABLE_ROWS.forEach((row, ri) => {
+  row.forEach((cell, ci) => {
+    const d = document.createElement('div');
+    d.className = 'cell';
+    d.textContent = cell;
+    d.style.background = ri===0 ? '#0a0e14' : ci===0 ? '#0d1018' : '#111520';
+    d.style.color = ri===0 ? '#555' : ci===0 ? '#556' : '#8ab';
+    d.style.fontSize = ri===0 ? '10px' : '11px';
+    d.style.letterSpacing = ri===0 ? '1px' : '0';
+    d.style.fontWeight = (ri===0||ci===0) ? '600' : '400';
+    tEl.appendChild(d);
+  });
+});
+
+let active = S[0];
+
+function render() {
+  document.getElementById('tabs').innerHTML = S.map(s =>
+    `<button class="tab${s.id===active.id?' active':''}" onclick="setActive('${s.id}')"
+      style="border-color:${s.id===active.id?s.color:'#2a2a3a'};color:${s.id===active.id?s.color:'#555'};background:${s.id===active.id?s.color+'18':'#111520'}"
+    >${s.label}</button>`
+  ).join('');
+
+  const a = active;
+  document.getElementById('card').style.borderColor = a.color+'44';
+  document.getElementById('card').innerHTML = `
+    <div class="card-title" style="color:${a.color}">${a.label.toUpperCase()}</div>
+    <div class="card-desc">${a.desc}</div>
+    <div class="two-col">
+      <div class="box" style="background:#0a1a0a;border:1px solid #1a3a1a">
+        <div class="box-label" style="color:#44aa44">✓ WHEN TO USE</div>
+        <div class="box-text">${a.when}</div>
+      </div>
+      <div class="box" style="background:#1a0a0a;border:1px solid #3a1a1a">
+        <div class="box-label" style="color:#e84393">⚠ WATCH OUT</div>
+        <div class="box-text">${a.risk}</div>
+      </div>
+    </div>
+    <div class="flow-label">POSITION FLOW</div>
+    <div class="flow">
+      ${a.flow.map((step,i) => {
+        const t = TYPES[step.type];
+        return `
+          <div class="step" style="background:${t.bg};border-color:${t.border};color:${t.border}">
+            <div class="step-icon">${step.icon}</div>
+            <div>${step.label}</div>
+          </div>
+          ${i<a.flow.length-1?'<div class="arrow">→</div>':''}
+        `;
+      }).join('')}
+    </div>
+    ${a.combine.length>0?`
+      <div class="combine-label">CAN BE COMBINED WITH</div>
+      <div class="combine-btns">
+        ${a.combine.map(id => {
+          const s = S.find(x=>x.id===id);
+          return s?`<button class="combine-btn" style="border-color:${s.color};color:${s.color}" onclick="setActive('${s.id}')">→ ${s.label}</button>`:'';
+        }).join('')}
+      </div>
+    `:'<div style="font-size:11px;color:#555;letter-spacing:1px">★ COMPLETE SOLUTION — no combining needed</div>'}
+  `;
+}
+
+function setActive(id) {
+  active = S.find(s=>s.id===id);
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
