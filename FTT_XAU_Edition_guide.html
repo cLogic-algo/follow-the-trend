@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Follow The Trend XAU — Full Guide</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080c12;font-family:'Courier New',monospace;color:#c9d1e0;min-height:100vh}
+.nav{position:sticky;top:0;z-index:100;background:#080c12ee;backdrop-filter:blur(8px);border-bottom:1px solid #1a1e2a;padding:10px 20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.nav-title{font-size:13px;font-weight:700;color:#fff;letter-spacing:2px;margin-right:10px}
+.nav-btn{background:#111520;border:1px solid #2a2a3a;color:#556;padding:5px 10px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:10px;letter-spacing:1px;transition:all 0.2s}
+.nav-btn:hover,.nav-btn.active{color:#7c6fff;border-color:#7c6fff44;background:#7c6fff11}
+.section{display:none;padding:24px 20px;max-width:960px;margin:0 auto}
+.section.visible{display:block}
+.sec-title{font-size:18px;font-weight:700;color:#fff;letter-spacing:2px;margin-bottom:4px}
+.sec-sub{font-size:10px;color:#444;letter-spacing:3px;margin-bottom:24px}
+.card{background:#111520;border:1px solid #1e2235;border-radius:6px;padding:18px;margin-bottom:12px}
+.card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.card-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.card-name{font-size:12px;font-weight:700;letter-spacing:1px}
+.card-body{font-size:11px;color:#8a9ab8;line-height:1.7}
+.card-body b{color:#c9d1e0}
+.ptable{width:100%;border-collapse:collapse;margin-top:10px;font-size:11px}
+.ptable th{text-align:left;color:#445;font-size:9px;letter-spacing:2px;padding:5px 8px;border-bottom:1px solid #1a1e2a;font-weight:600}
+.ptable td{padding:6px 8px;border-bottom:1px solid #151820;color:#8a9ab8;vertical-align:top}
+.ptable .pname{color:#c9d1e0;font-weight:600;white-space:nowrap}
+.ptable .pdefault{color:#7c6fff;font-size:10px}
+.flow-wrap{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:12px 0}
+.fstep{border:1px solid;border-radius:4px;padding:7px 10px;text-align:center;min-width:85px;font-size:10px;line-height:1.4;transition:transform 0.15s}
+.fstep:hover{transform:translateY(-2px)}
+.fstep-icon{font-size:13px;margin-bottom:2px}
+.farrow{color:#2a3040;font-size:16px}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.gbox{border-radius:4px;padding:12px}
+.gbox-label{font-size:9px;letter-spacing:2px;margin-bottom:5px;font-weight:700}
+.gbox-text{font-size:11px;color:#8a9ab8;line-height:1.5}
+.stabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px}
+.stab{background:#0d1018;border:1px solid #2a2a3a;color:#445;padding:6px 12px;border-radius:3px;cursor:pointer;font-family:inherit;font-size:10px;letter-spacing:1px;transition:all 0.2s}
+.stab.on{font-weight:700}
+.spanel{display:none}
+.spanel.on{display:block}
+.stbl{width:100%;border-collapse:collapse;font-size:11px}
+.stbl th{font-size:9px;letter-spacing:2px;color:#445;padding:6px 10px;border-bottom:1px solid #1a1e2a;text-align:left}
+.stbl td{padding:7px 10px;border-bottom:1px solid #13161e;color:#8a9ab8;vertical-align:top}
+.stbl .sname{color:#c9d1e0;font-weight:600}
+.stbl .strig{color:#f0a500;font-size:10px}
+.stbl .sact{color:#e84393;font-size:10px}
+.warn{background:#1a0e00;border:1px solid #f0a50044;border-radius:4px;padding:10px 14px;font-size:11px;color:#c8a060;margin:10px 0;line-height:1.5}
+.tip{background:#001a0e;border:1px solid #00d4aa44;border-radius:4px;padding:10px 14px;font-size:11px;color:#60c8a0;margin:10px 0;line-height:1.5}
+.overview{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:16px 0}
+.ov-box{border:1px solid;border-radius:5px;padding:14px;text-align:center}
+.ov-icon{font-size:22px;margin-bottom:6px}
+.ov-title{font-size:11px;font-weight:700;letter-spacing:1px;margin-bottom:4px}
+.ov-desc{font-size:10px;color:#8a9ab8;line-height:1.4}
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <div class="nav-title">⚡ FOLLOW THE TREND XAU</div>
+  <button class="nav-btn active" onclick="showSection('overview')">OVERVIEW</button>
+  <button class="nav-btn" onclick="showSection('setup')">SETUP</button>
+  <button class="nav-btn" onclick="showSection('profit')">PROFIT TAKING</button>
+  <button class="nav-btn" onclick="showSection('grid')">GRID</button>
+  <button class="nav-btn" onclick="showSection('pyramid')">PYRAMID</button>
+  <button class="nav-btn" onclick="showSection('risk')">RISK MGMT</button>
+  <button class="nav-btn" onclick="showSection('safety')">FAIL SAFE</button>
+  <button class="nav-btn" onclick="showSection('combos')">STRATEGIES</button>
+</div>
+
+<!-- OVERVIEW -->
+<div id="sec-overview" class="section visible">
+  <div class="sec-title">FOLLOW THE TREND XAU EDITION — FULL GUIDE</div>
+  <div class="sec-sub">Follow The Trend XAU · cAlgo / cTrader</div>
+  <div class="overview">
+    <div class="ov-box" style="border-color:#7c6fff44;background:#7c6fff08">
+      <div class="ov-icon">🎯</div>
+      <div class="ov-title" style="color:#7c6fff">ENTRY</div>
+      <div class="ov-desc">Automatic signals via MA4Cross, MACD or EMA. Manual mode also available via BUY/SELL buttons.</div>
+    </div>
+    <div class="ov-box" style="border-color:#00d4aa44;background:#00d4aa08">
+      <div class="ov-icon">📊</div>
+      <div class="ov-title" style="color:#00d4aa">POSITION BUILDING</div>
+      <div class="ov-desc">Grid (averaging down) and Pyramid (scaling in) — two independent basket-building mechanisms.</div>
+    </div>
+    <div class="ov-box" style="border-color:#f0a50044;background:#f0a50008">
+      <div class="ov-icon">💰</div>
+      <div class="ov-title" style="color:#f0a500">EXIT</div>
+      <div class="ov-desc">Basket TP, Trailing Stop, Hard Cap or Global Close. At least one must be configured — otherwise bot won't open.</div>
+    </div>
+    <div class="ov-box" style="border-color:#e8439344;background:#e8439308">
+      <div class="ov-icon">🛡️</div>
+      <div class="ov-title" style="color:#e84393">PROTECTION</div>
+      <div class="ov-desc">Soft SL, Daily Hard Loss, Max Basket Loss, Max Duration, Recovery Pause — multi-layer risk controls.</div>
+    </div>
+    <div class="ov-box" style="border-color:#39d35344;background:#39d35308">
+      <div class="ov-icon">📈</div>
+      <div class="ov-title" style="color:#39d353">TREND FILTER</div>
+      <div class="ov-desc">MA4Cross, EMA Cross/Price, WWS Cross/Price — bot enters only in the direction of the higher timeframe trend.</div>
+    </div>
+    <div class="ov-box" style="border-color:#00aaff44;background:#00aaff08">
+      <div class="ov-icon">⏰</div>
+      <div class="ov-title" style="color:#00aaff">TRADING HOURS</div>
+      <div class="ov-desc">Filter that blocks new entries or closes the basket outside defined UTC hours.</div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#7c6fff"></div><div class="card-name" style="color:#7c6fff">HOW IT WORKS — FLOW</div></div>
+    <div class="flow-wrap">
+      <div class="fstep" style="border-color:#00aaff;background:#0d2233;color:#00aaff"><div class="fstep-icon">📡</div>Entry Signal<br>(Auto/Manual)</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#7c6fff;background:#1a1230;color:#7c6fff"><div class="fstep-icon">🔍</div>Trend Filter<br>OK?</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#39d353;background:#0d1f0d;color:#39d353"><div class="fstep-icon">▶</div>Open Base<br>Position</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#f0a500;background:#2a2200;color:#f0a500"><div class="fstep-icon">📊</div>Grid / Pyramid<br>add levels</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#00d4aa;background:#062a1e;color:#00d4aa"><div class="fstep-icon">💰</div>TP / Trailing<br>/ Hard Cap</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#e84393;background:#2a0a1a;color:#e84393"><div class="fstep-icon">✓</div>Basket<br>Closed</div>
+    </div>
+    <div class="warn">⚠ Bot will NOT open a position if NO exit mechanism is configured (TP / Trailing / Hard Cap / Soft SL / Daily Loss = 0). This prevents opening positions with no way to close them.</div>
+  </div>
+</div>
+
+<!-- SETUP -->
+<div id="sec-setup" class="section">
+  <div class="sec-title">SETUP</div>
+  <div class="sec-sub">BASIC CONFIGURATION</div>
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#7c6fff"></div><div class="card-name" style="color:#7c6fff">TRADING MODE</div></div>
+    <div class="g2">
+      <div class="gbox" style="background:#1a1230;border:1px solid #7c6fff33">
+        <div class="gbox-label" style="color:#7c6fff">AUTO</div>
+        <div class="gbox-text">Bot generates signals automatically using the selected trigger (MA4Cross / MACD / EMA). Fully hands-free operation.</div>
+      </div>
+      <div class="gbox" style="background:#1a1230;border:1px solid #7c6fff33">
+        <div class="gbox-label" style="color:#7c6fff">MANUAL</div>
+        <div class="gbox-text">Bot waits for BUY/SELL button click in the UI panel. Grid and Pyramid run automatically after the base position is opened.</div>
+      </div>
+    </div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>OPTIONS</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Label</td><td class="pdefault">FTT</td><td>Unique bot identifier. All positions carry this prefix in their label. If running multiple bots — each must have a different label.</td></tr>
+      <tr><td class="pname">Mode</td><td class="pdefault">Auto / Manual</td><td>Auto = automatic signals. Manual = UI panel buttons.</td></tr>
+      <tr><td class="pname">Auto Trigger</td><td class="pdefault">MA4Cross / MACD / EMA</td><td>Algorithm generating entry signals in Auto mode.</td></tr>
+      <tr><td class="pname">Trading Direction</td><td class="pdefault">Both / BuyOnly / SellOnly</td><td>Restricts trade direction. BuyOnly = longs only, SellOnly = shorts only.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#39d353"></div><div class="card-name" style="color:#39d353">TREND FILTER</div></div>
+    <div class="card-body">Checks trend direction on a <b>higher timeframe</b> (TrendTimeFrame) and blocks entries against the trend. Works independently from the entry trigger.</div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>OPTIONS</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Trend Filter Mode</td><td class="pdefault">Off / PlayWithTrend</td><td><b>Off</b> = filter disabled, bot enters both directions.<br><b>PlayWithTrend</b> = bot only enters in the direction of the higher TF trend.</td></tr>
+      <tr><td class="pname">Trend Filter</td><td class="pdefault">None / MA4Cross / WWSPrice / WWSCross / EMA_Price / EMA_Cross</td><td>Algorithm for trend assessment. MA4Cross = 4 MA crossover (High/Low bands). WWS = Wilder Smoothing MA.</td></tr>
+      <tr><td class="pname">Trend TimeFrame</td><td class="pdefault">H4</td><td>Timeframe on which the trend is evaluated. Usually higher than the bot's working timeframe.</td></tr>
+      <tr><td class="pname">MA Fast/Slow Period</td><td class="pdefault">50 / 200</td><td>Fast and slow MA periods for WWS Price/Cross filters.</td></tr>
+      <tr><td class="pname">MA4 Min Spread (pips)</td><td class="pdefault">35</td><td>Minimum gap between MA4 bands to consider the trend active. Smaller = more signals, larger = only strong trends.</td></tr>
+    </table>
+    <div class="tip">💡 Recommended: PlayWithTrend + MA4Cross on H4 — proven combination for XAU/USD. Minimises counter-trend entries.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#00aaff"></div><div class="card-name" style="color:#00aaff">ENTRY TRIGGERS</div></div>
+    <div class="stabs">
+      <button class="stab on" onclick="stab(this,'trig','ma4')" style="color:#00aaff;border-color:#00aaff44">MA4Cross</button>
+      <button class="stab" onclick="stab(this,'trig','macd')">MACD</button>
+      <button class="stab" onclick="stab(this,'trig','ema')">EMA</button>
+    </div>
+    <div id="trig-ma4" class="spanel on">
+      <div class="card-body">Trigger based on 4 MA lines (Fast High, Fast Low, Slow High, Slow Low). BUY signal when Fast band is above Slow band + price touches Fast High. Opposite for SELL.</div>
+      <table class="ptable">
+        <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+        <tr><td class="pname">Fast Period</td><td class="pdefault">9</td><td>Fast MA period for trigger</td></tr>
+        <tr><td class="pname">Slow Period</td><td class="pdefault">21</td><td>Slow MA period for trigger</td></tr>
+        <tr><td class="pname">MA Type</td><td class="pdefault">Exponential</td><td>MA type: Simple, Exponential, Wilder etc.</td></tr>
+        <tr><td class="pname">MA4 Min Spread (pips)</td><td class="pdefault">0</td><td>Minimum band gap to generate a signal. 0 = no filter.</td></tr>
+      </table>
+    </div>
+    <div id="trig-macd" class="spanel">
+      <div class="card-body">Classic MACD crossover. BUY when MACD crosses Signal upward at negative values (Signal rising). SELL is the opposite.</div>
+      <table class="ptable">
+        <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+        <tr><td class="pname">MACD Long Cycle</td><td class="pdefault">26</td><td>Slow EMA</td></tr>
+        <tr><td class="pname">MACD Short Cycle</td><td class="pdefault">12</td><td>Fast EMA</td></tr>
+        <tr><td class="pname">MACD Period</td><td class="pdefault">9</td><td>Signal line period</td></tr>
+      </table>
+    </div>
+    <div id="trig-ema" class="spanel">
+      <div class="card-body">Signal when price touches the fast EMA from the correct side (Buy = price at EMA from above, Sell from below). Min EMA Spread filters weak signals.</div>
+      <table class="ptable">
+        <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+        <tr><td class="pname">EMA Trigger Fast Period</td><td class="pdefault">20</td><td>Fast EMA for trigger</td></tr>
+        <tr><td class="pname">EMA Trigger Slow Period</td><td class="pdefault">50</td><td>Slow EMA for trigger</td></tr>
+        <tr><td class="pname">Min EMA Spread (pips)</td><td class="pdefault">2.0</td><td>Minimum gap between EMAs to consider trend strong enough</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#00aaff"></div><div class="card-name" style="color:#00aaff">TRADING HOURS</div></div>
+    <div class="card-body">Blocks trading outside specified UTC hours. <b>Start=0, End=0</b> = filter disabled (trade 24/7).</div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Trading Hours Start/End (UTC)</td><td>Defines the BLOCK window. Start &lt; End = intraday block (e.g. 9–17). Start &gt; End = overnight block (e.g. 22–6).</td></tr>
+      <tr><td class="pname">Block Entries Only</td><td>YES = blocks new entries only, open positions stay. NO = full block.</td></tr>
+      <tr><td class="pname">Close Basket on Block</td><td>YES = close all positions when entering the block window.</td></tr>
+    </table>
+    <div class="warn">⚠ Start=22, End=6 means BLOCK from 22:00 to 06:00 UTC (overnight). Bot does not trade in this window.</div>
+  </div>
+</div>
+
+<!-- PROFIT TAKING -->
+<div id="sec-profit" class="section">
+  <div class="sec-title">PROFIT TAKING</div>
+  <div class="sec-sub">EXIT MECHANISMS</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#00d4aa"></div><div class="card-name" style="color:#00d4aa">FIRST POSITION TP / GRID BASKET TP</div></div>
+    <div class="card-body">Bot calculates the <b>volume-weighted average entry price</b> of the entire basket and sets one shared TP level for all positions. When price touches it — the whole basket closes at once.</div>
+    <div class="flow-wrap">
+      <div class="fstep" style="border-color:#00aaff;background:#0d2233;color:#00aaff"><div class="fstep-icon">▶</div>Entry<br>@4400</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#44aa44;background:#0d1f0d;color:#44aa44"><div class="fstep-icon">↓</div>Grid_1<br>@4398</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#44aa44;background:#0d1f0d;color:#44aa44"><div class="fstep-icon">↓</div>Grid_2<br>@4396</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#f0a500;background:#2a2200;color:#f0a500"><div class="fstep-icon">⟳</div>TP shifts<br>to avg+TP$</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#00d4aa;background:#062a1e;color:#00d4aa"><div class="fstep-icon">✓</div>Full basket<br>closed</div>
+    </div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Positions for First TP</td><td class="pdefault">1</td><td>How many positions in basket before switching to Grid Basket TP. Range: 1–3.</td></tr>
+      <tr><td class="pname">First Position TP ($)</td><td class="pdefault">4.20</td><td>Target profit for a small basket (up to "Positions for First TP"). Calculated from average entry price.</td></tr>
+      <tr><td class="pname">Grid Basket TP ($)</td><td class="pdefault">5.70</td><td>Target profit when basket has more positions (grid added). Usually higher than First TP as basket volume is larger.</td></tr>
+      <tr><td class="pname">Global Close All Profit ($)</td><td class="pdefault">78.0</td><td>If total profit of ALL bot positions (Buy + Sell combined) reaches this — close everything. Acts as a global ceiling.</td></tr>
+    </table>
+    <div class="tip">💡 When First TP = 0 and Grid Basket TP = 0 — bot actively removes TP from positions (won't leave old TP from a previous session).</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#f0a500"></div><div class="card-name" style="color:#f0a500">BASKET TRAILING STOP</div></div>
+    <div class="card-body">Trailing tracks the basket profit peak. Activates when profit reaches the <b>Trigger</b>, then tracks each new high. Closes when profit pulls back by <b>Trail Step</b> from the peak.</div>
+    <div class="flow-wrap">
+      <div class="fstep" style="border-color:#00aaff;background:#0d2233;color:#00aaff"><div class="fstep-icon">▶</div>Basket<br>open</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#555;background:#111520;color:#888"><div class="fstep-icon">→</div>Profit &lt;<br>Trigger</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#f0a500;background:#2a2200;color:#f0a500"><div class="fstep-icon">⚡</div>Trigger<br>reached</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#ffcc00;background:#2a1a00;color:#ffcc00"><div class="fstep-icon">▲</div>Tracking<br>peak</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#e84393;background:#2a0a1a;color:#e84393"><div class="fstep-icon">↓</div>Pullback<br>by Trail Step</div>
+      <div class="farrow">→</div>
+      <div class="fstep" style="border-color:#00d4aa;background:#062a1e;color:#00d4aa"><div class="fstep-icon">✓</div>Basket<br>closed</div>
+    </div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Basket Trailing</td><td class="pdefault">Yes/No</td><td>Enables/disables trailing for the entire basket.</td></tr>
+      <tr><td class="pname">Basket Trail Trigger ($)</td><td class="pdefault">65.0</td><td>Minimum basket profit before trailing starts tracking. Before trigger — trailing is inactive.</td></tr>
+      <tr><td class="pname">Basket Trail Step ($)</td><td class="pdefault">10.0</td><td>How many dollars profit can fall from the peak before closing the basket. Larger = more room for the market, but you give back more profit.</td></tr>
+      <tr><td class="pname">Trailing Hard Cap ($)</td><td class="pdefault">0</td><td>Hard ceiling — closes basket IMMEDIATELY when profit reaches this amount, without waiting for a pullback. 0 = disabled.</td></tr>
+    </table>
+    <div class="warn">⚠ When profit drops below Trigger — the peak resets to null. Trailing restarts from scratch when profit rises back above Trigger.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#e84393"></div><div class="card-name" style="color:#e84393">HARD CAP</div></div>
+    <div class="card-body">Instant basket close when profit reaches the cap. Does not wait for a pullback — guaranteed profit lock.</div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Use Shared Hard Cap</td><td class="pdefault">Yes</td><td><b>Yes</b> = one limit for the whole basket (Grid + Pyramid together). <b>No</b> = separate limits for Grid and Pyramid.</td></tr>
+      <tr><td class="pname">Shared Hard Cap ($)</td><td class="pdefault">0</td><td>Total basket profit cap. 0 = disabled.</td></tr>
+      <tr><td class="pname">Grid Hard Cap ($)</td><td class="pdefault">0</td><td>Cap for grid positions only (+ base). Active when Use Shared Hard Cap = No.</td></tr>
+      <tr><td class="pname">Pyramid Hard Cap ($)</td><td class="pdefault">0</td><td>Cap for pyramid positions only. Active when Use Shared Hard Cap = No.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#7c6fff"></div><div class="card-name" style="color:#7c6fff">PARTIAL CLOSE</div></div>
+    <div class="card-body">Close a portion of basket volume when profit reaches the Trigger. The remainder stays open and continues with trailing or TP.</div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Partial Close %</td><td class="pdefault">0</td><td>Percentage of volume to close (0 = disabled, 50 = close half the basket).</td></tr>
+      <tr><td class="pname">Partial Close Trigger ($)</td><td class="pdefault">0</td><td>Basket profit at which partial close executes. Executes only once per basket.</td></tr>
+    </table>
+    <div class="tip">💡 Partial Close executes only ONCE per basket — the flag resets only when the basket fully closes.</div>
+  </div>
+</div>
+
+<!-- GRID -->
+<div id="sec-grid" class="section">
+  <div class="sec-title">GRID</div>
+  <div class="sec-sub">POSITION AVERAGING (AVERAGING DOWN)</div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#44aa44"></div><div class="card-name" style="color:#44aa44">WHAT IS GRID?</div></div>
+    <div class="card-body">Grid opens additional positions in the same direction when price moves AGAINST the base position. Lowers the average entry price (for BUY) or raises it (for SELL). Allows closing the basket in profit even if price hasn't returned to the original entry.</div>
+    <div class="warn">⚠ Grid is a high-risk strategy during strong counter-trends — it can significantly increase exposure. Always set SL or Max Basket Loss.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#44aa44"></div><div class="card-name" style="color:#44aa44">GRID MODES</div></div>
+    <div class="stabs">
+      <button class="stab on" onclick="stab(this,'gm','pd')" style="color:#44aa44;border-color:#44aa4444">PriceDistance</button>
+      <button class="stab" onclick="stab(this,'gm','re')">ReEntryTrigger</button>
+      <button class="stab" onclick="stab(this,'gm','off')">Off</button>
+    </div>
+    <div id="gm-pd" class="spanel on">
+      <div class="card-body"><b>PriceDistance</b> — Grid opens when price moves away by <b>Grid Price Step ($)</b> from the last grid level (or base). Simplest mode, purely based on price distance.</div>
+    </div>
+    <div id="gm-re" class="spanel">
+      <div class="card-body"><b>ReEntryTrigger</b> — Grid waits for a trigger signal (MA4Cross/EMA) AND the required price distance. More selective — doesn't open on every move.</div>
+    </div>
+    <div id="gm-off" class="spanel">
+      <div class="card-body"><b>Off</b> — Grid disabled. Bot trades single positions without averaging.</div>
+    </div>
+    <table class="ptable" style="margin-top:12px">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Grid Max Levels</td><td class="pdefault">20</td><td>Maximum number of grid levels (excluding base). Bot won't open more even if price continues.</td></tr>
+      <tr><td class="pname">Grid Price Step ($)</td><td class="pdefault">2.0</td><td>Distance from last level to open the next. For XAU/USD this is dollars per ounce.</td></tr>
+      <tr><td class="pname">Grid Level Martingale Multiplier</td><td class="pdefault">2.0</td><td>Distance multiplier between consecutive levels. 2.0 = each next level is 2x further. 1.0 = fixed distance.</td></tr>
+      <tr><td class="pname">No Grid on Same Candle</td><td class="pdefault">Yes</td><td>Blocks grid on the same candle as the previous level. Prevents multiple entries on one candle.</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#44aa44"></div><div class="card-name" style="color:#44aa44">GRID VOLUME</div></div>
+    <div class="stabs">
+      <button class="stab on" onclick="stab(this,'gv','step')" style="color:#44aa44;border-color:#44aa4444">STEP</button>
+      <button class="stab" onclick="stab(this,'gv','mart')">MARTINGALE</button>
+      <button class="stab" onclick="stab(this,'gv','fix')">FIX LOT</button>
+    </div>
+    <div id="gv-step" class="spanel on">
+      <div class="card-body"><b>STEP</b> — Each grid level = Base Lot + (Grid Step Volume × level_number).<br>Example: Base=0.02, Step=0.02 → Grid_1=0.04, Grid_2=0.06, Grid_3=0.08...</div>
+    </div>
+    <div id="gv-mart" class="spanel">
+      <div class="card-body"><b>MARTINGALE</b> — Each level = Base Lot × (Martingale Multiplier ^ level_number).<br>Example: Base=0.02, Multi=2 → Grid_1=0.04, Grid_2=0.08, Grid_3=0.16... <span style="color:#e84393">HIGH RISK!</span></div>
+    </div>
+    <div id="gv-fix" class="spanel">
+      <div class="card-body"><b>FIX LOT</b> — Every grid level has identical volume to the base position (Main Lot Size). Simplest and safest in terms of volume.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#e84393"></div><div class="card-name" style="color:#e84393">GRID PROTECTION — RECOVERY PAUSE</div></div>
+    <div class="card-body">When a basket closes at a <b>loss</b> — bot pauses opening new grid levels for N candles. Gives the market time to settle before averaging again.</div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Recovery Pause Candles</td><td class="pdefault">0</td><td>Number of candles to pause after a loss-closing basket. 0 = no pause (standard behaviour).</td></tr>
+    </table>
+    <div class="tip">💡 Recovery Pause works independently for Buy and Sell. A loss on Buy does not block Sell grid.</div>
+  </div>
+</div>
+
+<!-- PYRAMID -->
+<div id="sec-pyramid" class="section">
+  <div class="sec-title">PYRAMID</div>
+  <div class="sec-sub">POSITION SCALING (SCALING IN)</div>
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#00aaff"></div><div class="card-name" style="color:#00aaff">WHAT IS PYRAMID?</div></div>
+    <div class="g2">
+      <div class="gbox" style="background:#0d1f0d;border:1px solid #44aa4433">
+        <div class="gbox-label" style="color:#44aa44">GRID (averaging DOWN)</div>
+        <div class="gbox-text">Price goes AGAINST you → new positions lower → lowers average → TP closer</div>
+      </div>
+      <div class="gbox" style="background:#0d2233;border:1px solid #00aaff33">
+        <div class="gbox-label" style="color:#00aaff">PYRAMID (scaling UP)</div>
+        <div class="gbox-text">Price goes WITH you → new positions higher → more volume on a winning trend</div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#00aaff"></div><div class="card-name" style="color:#00aaff">PYRAMID MODES</div></div>
+    <div class="stabs">
+      <button class="stab on" onclick="stab(this,'pm','tpsl')" style="color:#00aaff;border-color:#00aaff44">TPSL</button>
+      <button class="stab" onclick="stab(this,'pm','reentry')">ReEntry</button>
+      <button class="stab" onclick="stab(this,'pm','poff')">Off</button>
+    </div>
+    <div id="pm-tpsl" class="spanel on">
+      <div class="card-body"><b>TPSL</b> — Bot divides the Entry→TP range into equal (or martingale) segments and opens pyramid levels as price reaches each segment. Each new level moves the SL of previous levels to the entry price of the previous level (trailing SL).</div>
+      <div class="flow-wrap">
+        <div class="fstep" style="border-color:#00aaff;background:#0d2233;color:#00aaff"><div class="fstep-icon">▶</div>Base<br>@4400</div>
+        <div class="farrow">→</div>
+        <div class="fstep" style="border-color:#00aaff;background:#0d2233;color:#00aaff"><div class="fstep-icon">↑</div>Pir_1<br>@4410<br>SL=4400</div>
+        <div class="farrow">→</div>
+        <div class="fstep" style="border-color:#00aaff;background:#0d2233;color:#00aaff"><div class="fstep-icon">↑</div>Pir_2<br>@4420<br>SL=4410</div>
+        <div class="farrow">→</div>
+        <div class="fstep" style="border-color:#00d4aa;background:#062a1e;color:#00d4aa"><div class="fstep-icon">✓</div>TP<br>@4430</div>
+      </div>
+    </div>
+    <div id="pm-reentry" class="spanel">
+      <div class="card-body"><b>ReEntry</b> — Pyramid waits for a trigger signal (MA4Cross/EMA) and required price distance from the last position. More selective than TPSL.</div>
+    </div>
+    <div id="pm-poff" class="spanel">
+      <div class="card-body"><b>Off</b> — Pyramid disabled. Bot does not scale positions upward.</div>
+    </div>
+    <table class="ptable" style="margin-top:12px">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Pyramid Levels Count</td><td class="pdefault">3</td><td>Maximum number of pyramid levels (excluding base).</td></tr>
+      <tr><td class="pname">Pyramid Price Step ($)</td><td class="pdefault">0.10</td><td>Base price step between pyramid levels (for ReEntry) or minimum segment (for TPSL).</td></tr>
+      <tr><td class="pname">Pyramid Level Martingale Multiplier</td><td class="pdefault">1.0</td><td>Distance multiplier between levels. 2.0 = each next level 2x further. 1.0 = equal segments.</td></tr>
+      <tr><td class="pname">Pyramid Volume Type</td><td class="pdefault">STEP</td><td>STEP / MARTINGALE / FIX_LOT — same logic as Grid Volume.</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- RISK -->
+<div id="sec-risk" class="section">
+  <div class="sec-title">RISK MANAGEMENT</div>
+  <div class="sec-sub">CAPITAL PROTECTION</div>
+  <div class="card">
+    <div class="card-header"><div class="card-dot" style="background:#e84393"></div><div class="card-name" style="color:#e84393">SOFT STOP LOSS (BASKET)</div></div>
+    <div class="card-body">Bot calculates the <b>volume-weighted average entry price</b> of the whole basket and sets SL for every position at <b>Grid Step × SL Multiplier</b> distance from that average. SL moves automatically as new levels are added.</div>
+    <table class="ptable">
+      <tr><th>PARAMETER</th><th>DEFAULT</th><th>DESCRIPTION</th></tr>
+      <tr><td class="pname">Main Lot Size (Base)</td><td class="pdefault">0.01</td><td>Base position volume and reference point for grid/pyramid volume calculations. Minimum: 0.01.</td></tr>
+      <tr><td class="pname">Max Lot Size</td><td class="pdefault">10.0</td><td>Hard limit — no bot position will exceed this volume.</td></tr>
+      <tr><td class="pname">Soft SL Multiplier (x Grid Step)</td><td class="pdefault">200</td><td>SL = avg entry ± (Grid Price Step × this multiplier). Example: Step=$2, Multi=200 → SL $400 from average. 0 = no Soft SL.</td></tr>
+      <tr><td class="pname">Daily Hard Loss ($)</td><td class="pdefault">200</td><td>Daily loss limit. When closed + floating losses reach this — close everything. Resets at midnight UTC. 0 = disabled.</td></tr>
+    </table>
+    <div class="warn">⚠ Soft SL applies to the WHOLE basket (not per position). As grid adds levels, SL shifts to the new average — it may be further away than the initial SL.</div>
+  </div>
+</div>
+
+<!-- FAIL SAFE -->
+<div id="sec-safety" class="section">
+  <div class="sec-title">PROTECTION MAP</div>
+  <div class="sec-sub">ALL SAFETY MECHANISMS AT A GLANCE</div>
+  <table class="stbl">
+    <tr><th>MECHANISM</th><th>TRIGGER CONDITION</th><th>ACTION</th><th>RESETS</th></tr>
+    <tr><td class="sname">Soft SL (Basket)</td><td class="strig">Price hits basket SL<br>(avg ± Step×Multi)</td><td class="sact">Closed by broker (SL on position)</td><td>On every basket change</td></tr>
+    <tr><td class="sname">Daily Hard Loss</td><td class="strig">Daily result (closed+floating) ≤ -limit</td><td class="sact">Close all bot positions</td><td>At midnight UTC</td></tr>
+    <tr><td class="sname">Max Basket Loss</td><td class="strig">Basket floating P&L ≤ -limit</td><td class="sact">Close entire Buy or Sell basket</td><td>On new basket</td></tr>
+    <tr><td class="sname">Max Duration</td><td class="strig">Oldest basket position > N hours</td><td class="sact">Close entire basket (Buy or Sell)</td><td>On new basket</td></tr>
+    <tr><td class="sname">Recovery Pause</td><td class="strig">Basket closed at a loss</td><td class="sact">Blocks grid for N candles</td><td>After N candles</td></tr>
+    <tr><td class="sname">Hard Cap (Shared)</td><td class="strig">Basket profit ≥ cap</td><td class="sact">Close entire basket immediately</td><td>On new basket</td></tr>
+    <tr><td class="sname">Trailing Hard Cap</td><td class="strig">Basket profit ≥ Trail Hard Cap</td><td class="sact">Close immediately (no pullback wait)</td><td>On new basket</td></tr>
+    <tr><td class="sname">Global Close All</td><td class="strig">Total profit ALL positions ≥ limit</td><td class="sact">Close everything (Buy + Sell)</td><td>On new basket</td></tr>
+    <tr><td class="sname">Trend Reversal Block</td><td class="strig">Trend reversed vs open position</td><td class="sact">Blocks pyramid (grid may continue)</td><td>When trend returns</td></tr>
+    <tr><td class="sname">Exit Guard</td><td class="strig">No exit mechanism configured</td><td class="sact">Blocks base position from opening</td><td>When exit is configured</td></tr>
+  </table>
+</div>
+
+<!-- STRATEGIES -->
+<div id="sec-combos" class="section">
+  <div class="sec-title">STRATEGIES</div>
+  <div class="sec-sub">RECOMMENDED SETTINGS FOR DIFFERENT SCENARIOS</div>
+  <div class="stabs">
+    <button class="stab on" onclick="stab(this,'cs','scalp')" style="color:#00d4aa;border-color:#00d4aa44">Scalping</button>
+    <button class="stab" onclick="stab(this,'cs','trend')">Trend Following</button>
+    <button class="stab" onclick="stab(this,'cs','grid')">Grid + Trailing</button>
+    <button class="stab" onclick="stab(this,'cs','safe')">Conservative</button>
+  </div>
+  <div id="cs-scalp" class="spanel on">
+    <div class="card" style="border-color:#00d4aa44">
+      <div class="card-name" style="color:#00d4aa;margin-bottom:12px">⚡ SCALPING — fast entries/exits</div>
+      <div class="g2">
+        <div class="gbox" style="background:#0a1a14;border:1px solid #00d4aa22"><div class="gbox-label" style="color:#00d4aa">ENTRY</div><div class="gbox-text">Trigger: MA4Cross or EMA<br>Trend Filter: PlayWithTrend<br>Direction: Both</div></div>
+        <div class="gbox" style="background:#0a1a14;border:1px solid #00d4aa22"><div class="gbox-label" style="color:#00d4aa">EXIT</div><div class="gbox-text">First Position TP: $3–6<br>Grid Basket TP: $5–10<br>Trailing: OFF</div></div>
+        <div class="gbox" style="background:#0a1a14;border:1px solid #00d4aa22"><div class="gbox-label" style="color:#00d4aa">GRID</div><div class="gbox-text">Mode: PriceDistance<br>Step: $1–3<br>Max Levels: 5–10<br>Volume: STEP</div></div>
+        <div class="gbox" style="background:#0a1a14;border:1px solid #00d4aa22"><div class="gbox-label" style="color:#00d4aa">PROTECTION</div><div class="gbox-text">Soft SL Multi: 100–200<br>Daily Hard Loss: $50–100<br>Max Basket Loss: $200</div></div>
+      </div>
+      <div class="tip">✓ Quick trades, small profit per trade, high trade count. Grid helps close in profit when price hasn't fully returned to entry.</div>
+    </div>
+  </div>
+  <div id="cs-trend" class="spanel">
+    <div class="card" style="border-color:#f0a50044">
+      <div class="card-name" style="color:#f0a500;margin-bottom:12px">📈 TREND FOLLOWING — extract maximum from trends</div>
+      <div class="g2">
+        <div class="gbox" style="background:#1a1400;border:1px solid #f0a50022"><div class="gbox-label" style="color:#f0a500">ENTRY</div><div class="gbox-text">Trigger: MA4Cross<br>Trend Filter: PlayWithTrend + MA4Cross H4<br>Direction: Both</div></div>
+        <div class="gbox" style="background:#1a1400;border:1px solid #f0a50022"><div class="gbox-label" style="color:#f0a500">EXIT</div><div class="gbox-text">Trailing: ON<br>Trigger: $40–80<br>Trail Step: $10–20<br>Hard Cap: $150–300</div></div>
+        <div class="gbox" style="background:#1a1400;border:1px solid #f0a50022"><div class="gbox-label" style="color:#f0a500">PYRAMID</div><div class="gbox-text">Mode: TPSL or ReEntry<br>Levels: 2–3<br>Volume: STEP or FIX_LOT</div></div>
+        <div class="gbox" style="background:#1a1400;border:1px solid #f0a50022"><div class="gbox-label" style="color:#f0a500">PROTECTION</div><div class="gbox-text">Grid: OFF or minimal<br>Daily Hard Loss: $100–200<br>Max Duration: 48–72h</div></div>
+      </div>
+      <div class="tip">✓ Trailing + Hard Cap = best combination. Trailing extracts maximum, Hard Cap closes on sudden spikes.</div>
+    </div>
+  </div>
+  <div id="cs-grid" class="spanel">
+    <div class="card" style="border-color:#7c6fff44">
+      <div class="card-name" style="color:#7c6fff;margin-bottom:12px">🔄 GRID + TRAILING — averaging with dynamic exit</div>
+      <div class="g2">
+        <div class="gbox" style="background:#12102a;border:1px solid #7c6fff22"><div class="gbox-label" style="color:#7c6fff">ENTRY</div><div class="gbox-text">Trigger: MA4Cross<br>Trend Filter: PlayWithTrend<br>Direction: Both</div></div>
+        <div class="gbox" style="background:#12102a;border:1px solid #7c6fff22"><div class="gbox-label" style="color:#7c6fff">EXIT</div><div class="gbox-text">Grid Basket TP: $5–15<br>Trailing Trigger: higher than TP<br>Trail Step: $5–15<br>Hard Cap: $100–200</div></div>
+        <div class="gbox" style="background:#12102a;border:1px solid #7c6fff22"><div class="gbox-label" style="color:#7c6fff">GRID</div><div class="gbox-text">Mode: PriceDistance<br>Step: $2–5<br>Max Levels: 10–20<br>Volume: STEP</div></div>
+        <div class="gbox" style="background:#12102a;border:1px solid #7c6fff22"><div class="gbox-label" style="color:#7c6fff">PROTECTION</div><div class="gbox-text">Soft SL Multi: 150–250<br>Max Basket Loss: $500<br>Recovery Pause: 3–10 candles</div></div>
+      </div>
+      <div class="warn">⚠ Trailing Trigger MUST be higher than Grid Basket TP, otherwise TP will close the basket before trailing activates.</div>
+    </div>
+  </div>
+  <div id="cs-safe" class="spanel">
+    <div class="card" style="border-color:#39d35344">
+      <div class="card-name" style="color:#39d353;margin-bottom:12px">🛡️ CONSERVATIVE — minimal risk</div>
+      <div class="g2">
+        <div class="gbox" style="background:#0a1a0a;border:1px solid #39d35322"><div class="gbox-label" style="color:#39d353">ENTRY</div><div class="gbox-text">Trigger: MA4Cross<br>Trend Filter: PlayWithTrend (strong filter)<br>Direction: Both</div></div>
+        <div class="gbox" style="background:#0a1a0a;border:1px solid #39d35322"><div class="gbox-label" style="color:#39d353">EXIT</div><div class="gbox-text">First TP: $3–5<br>Grid Basket TP: $5–10<br>Trailing: OFF or high Trigger</div></div>
+        <div class="gbox" style="background:#0a1a0a;border:1px solid #39d35322"><div class="gbox-label" style="color:#39d353">GRID</div><div class="gbox-text">Mode: PriceDistance<br>Max Levels: 3–5<br>Volume: FIX_LOT<br>Step: $3–5</div></div>
+        <div class="gbox" style="background:#0a1a0a;border:1px solid #39d35322"><div class="gbox-label" style="color:#39d353">PROTECTION</div><div class="gbox-text">Soft SL Multi: 100<br>Daily Hard Loss: $50<br>Max Basket Loss: $100–200<br>Max Duration: 24h</div></div>
+      </div>
+      <div class="tip">✓ Small grid, fixed volume, tight SL. Lower profit per trade but controlled risk.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showSection(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('visible'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('visible');
+  event.target.classList.add('active');
+}
+function stab(btn,group,panel){
+  const parent=btn.closest('.card')||btn.closest('.section')||document.body;
+  parent.querySelectorAll('.stab').forEach(b=>{b.classList.remove('on');b.style.color='#445';b.style.borderColor='#2a2a3a';b.style.background='#0d1018';});
+  btn.classList.add('on');
+  document.querySelectorAll('[id^="'+group+'-"]').forEach(p=>p.classList.remove('on'));
+  const t=document.getElementById(group+'-'+panel);
+  if(t)t.classList.add('on');
+}
+</script>
+</body>
+</html>
